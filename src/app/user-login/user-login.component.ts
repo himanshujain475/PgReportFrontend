@@ -15,4 +15,10 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    
+  }
+
+
+
 }
