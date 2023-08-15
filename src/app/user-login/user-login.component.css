@@ -1,0 +1,34 @@
+.flex-parent-element {
+    
+    display: flex;
+  /* flex-wrap: wrap; */
+  gap: 5px;
+  height: 100vh;
+  }
+  
+  .flex-child-element {
+    flex: 1; /* Equal distribution of space */
+
+}
+
+
+.parent-container {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .centered-div {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+
+  .padding-gap{
+      margin-top: 10px;
+   
+  }
+  
+  

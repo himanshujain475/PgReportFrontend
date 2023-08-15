@@ -1,3 +1,24 @@
-<p>
-  user-login works!
-</p>
+<div class ="flex-parent-element">
+  <div class="flex-child-element">
+    <img src="assets/swagatam_image.jpg" width="100%" height="100%">
+  </div>
+  <div class="flex-child-element parent-container">
+    <div class="centered-div">
+        <h4 style="text-align: center;">Login</h4>
+        <div>
+          <span style="color: red;border: 0ch;" *ngIf="errorList.length !=0">
+            <h4> Following errors:</h4>
+             <ul style="color:black;" *ngFor="let error of errorList">
+               <li>{{error}}</li>
+               
+             </ul>
+           </span>
+        </div>
+       
+        <input class="padding-gap" type="number" [(ngModel)]="mobileNo" text="mobileNo">
+        <input class="padding-gap" type="password" [(ngModel)]="password" text="password">
+        <br/>
+        <button class="padding-gap" style="color: blue;">Login</button>
+    </div>
+  </div>
+</div>

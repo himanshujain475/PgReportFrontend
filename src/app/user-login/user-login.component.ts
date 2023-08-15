@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Testability } from '@angular/core';
 
 @Component({
   selector: 'app-user-login',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoginComponent implements OnInit {
 
+  mobileNo : number;
+  password: string;
+  errorList = new Array();
+
   constructor() { }
 
   ngOnInit() {
+    this.errorList.push("hello")
   }
 
 }
