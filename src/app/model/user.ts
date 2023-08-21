@@ -1,4 +1,4 @@
-export class Login{
+export class User{
 
     mobile : number;
     pin: number;

@@ -25,13 +25,13 @@
                      <div class="form-group block-display">
                         <!-- <label for="exampleInputEmail1">Password</label>
                         <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password"> -->
-                        <input type="{{ showPassword ? 'number' : 'password' }}" class="form-control" (change)="validatePassword($event)"  [ngModelOptions]="{standalone: true}" [(ngModel)]="password" placeholder="Pin" maxlength="4" pattern="[0-9]*">
+                        <input type="{{ showPassword ? 'number' : 'password' }}" class="form-control" (change)="validatePassword($event,'Pin')"  [ngModelOptions]="{standalone: true}" [(ngModel)]="password" placeholder="Pin" maxlength="4" pattern="[0-9]*">
                         <button (click)="togglePasswordVisibility()">
                           <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                         </button>
                       </div>
                       <div class="form-group block-display"  *ngIf="signUp">
-                        <input type="{{ showPassword ? 'number' : 'password' }}" class="form-control" (change)="validatePassword($event)" [(ngModel)]="passwordCheck" placeholder="Pin Confirm" maxlength="4" pattern="[0-9]*">
+                        <input type="{{ showPassword ? 'number' : 'password' }}" class="form-control" (change)="validatePassword($event,'PinConfirm')" [ngModelOptions]="{standalone: true}" [(ngModel)]="passwordCheck" placeholder="Pin Confirm" maxlength="4" pattern="[0-9]*">
                         <button (click)="togglePasswordVisibility()">
                           <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                         </button>
@@ -41,7 +41,7 @@
                      </div>
                      <div class="col-md-12 text-center ">
                        
-                      <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" >{{!signUp?"Login":"Sign Up"}}</button>
+                      <button type="submit" (click)="logIn()" class=" btn btn-block mybtn btn-primary tx-tfm" >{{!signUp?"Login":"Sign Up"}}</button>
                       <!-- <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" *ngIf="signUp">Sign Up</button> -->
                      
                      </div>

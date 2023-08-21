@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,13 +10,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './service/HttpService';
 import { HeaderComponent } from './header/header.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { AddViewUserComponent } from './add-view-user/add-view-user.component';
+import { Decode64Pipe } from './model/Decode64';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    Decode64Pipe,
+    AddViewUserComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +29,12 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     FormsModule,
      HttpClientModule,
      AlertModule.forRoot(),
+     ReactiveFormsModule
+     //BrowserAnimationsModule
     // CookieService
   ],
+  exports: [
+    Decode64Pipe],
   providers: [HttpService
     //,    CookieService
   ],
