@@ -1,0 +1,37 @@
+<div class="center-container">
+  <div class="card"  *ngFor="let card of cards; let i = index">
+    <div class="card-header center-name">
+     <b>{{card.name}}</b> 
+      <button id="plus-button" (click)="card.typeFlag=!card.typeFlag">{{card.typeFlag?"-":"+"}}</button>
+    </div>
+    <ng-container *ngIf="card.typeFlag">
+    <ng-container  *ngFor="let type of card.type; let j = index">
+      <div class="span-container">
+       <span style="padding: 10px;">{{type.name}}</span> 
+        <button id="plus-button" style="margin: 10px;" (click)="type.typeFlag=!type.typeFlag">{{type.typeFlag?"-":"+"}}</button>
+  
+      </div>
+      <!-- <span class="span-container">
+        </span> -->
+    <ng-container *ngIf="type.typeFlag">
+      <ul class="list-group list-group-flush">
+        
+        <li class="list-group-item li-container"   *ngFor="let expenditure of type.expenditure; let k = index">
+          <input id="input-container"  type="text" class="form-control li-flex-item" placeholder="Description" [(ngModel)]="expenditure.name" >  <input id="input-container"  type="number" class="form-control li-flex-item" placeholder="Amount"[(ngModel)]="expenditure.amount">
+          <div class="date-container li-flex-item">&nbsp;&nbsp;&nbsp;&nbsp;Created On &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{expenditure.createdOn}}</div>
+          <button id="plus-button" style="margin: 10px;background-color: red;" class="li-flex-item" (click)="deleteExpenditure(i,j,k)">x</button>
+        </li>
+
+        <ol>
+          <button id="plus-button" style="margin: 10px; margin-left: 100px;" (click)="addExpenditure(i,j)">Add</button>
+        </ol>
+      
+      </ul>
+  </ng-container>
+     
+    </ng-container>
+    
+    </ng-container>
+ 
+  </div>
+</div>

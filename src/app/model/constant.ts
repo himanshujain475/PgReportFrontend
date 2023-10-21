@@ -5,6 +5,7 @@ export class Constants{
   public static readonly LOGIN_URL = "/auth";
   public static readonly USER_PRESENT_URL="/userPresent";
   public static readonly ADD_USER_URL="/subs";
+  public static readonly GET_USER_DETAILS_URL ="/getUserDetails?mobile=";
   public static AUTH_TOKEN="";
  public static  HEADERS= new HttpHeaders();
  public static  isLogin = true;

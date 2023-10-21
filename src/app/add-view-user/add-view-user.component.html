@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" *ngIf="!viewOnly">
 
  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="form-row"  style="justify-content:center">
@@ -8,36 +8,50 @@
 
 
   <div class="form-row" >
+    <div class="form-group col-md-5">
+      <label for="inputDate">Joining Date</label>
+     
+    <input type="date" class="form-control" id="inputDate" name="inputDate"  formControlName="inputDate">
+    </div>
+    <div class="form-group col-md-7">
       <input type="file" id="picture" name="picture" accept="image/*" (change)="convertImageIntoBase64($event)" formControlName="picture">
+      
       <div class="image-container">
-        <img src="{{this.loginForm.value.picture}}" height="100px" width="150px">   
-        <button class="cross-overlay">X</button>
+        <img src="getSantizeURL()" height="100px" width="150px">   
+        <button *ngIf="loginForm.value.picture != ''" class="cross-overlay" (click)="cancelPhoto()">X</button>
       </div>
+    </div>
+      
+    
     
   </div>
 
 
   <div class="form-row">
-    <div class="form-group col-md-7">
-      <label for="inputName">Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Name" formControlName="inputName">
+    <div class="form-group col-md-5">
+      <label for="InputName">Name</label>
+      <input type="text" class="form-control" id="InputName" placeholder="Name" formControlName="inputName">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="InputEmail">Email</label>
+      <input type="email" class="form-control" id="InputEmail" placeholder="Email" formControlName="inputEmail">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="InputRoomNo">Room No</label>
+      <input type="number" class="form-control" id="InputRoomNo" placeholder="Room No" formControlName="inputRoomNo">
     </div>
     <div class="form-group col-md-5">
-      <label for="inputName">Email</label>
-      <input type="email" class="form-control" id="inputName" placeholder="Email" formControlName="inputEmail">
+      <label for="InputOccupation">Occupation</label>
+      <input type="text" class="form-control" id="InputOccupation" placeholder="Occupation" formControlName="inputOccupation">
     </div>
     <div class="form-group col-md-5">
-      <label for="inputOccupation">Occupation</label>
-      <input type="text" class="form-control" id="inputOccupation" placeholder="Occupation" formControlName="inputOccupation">
-    </div>
-    <div class="form-group col-md-5">
-      <label for="inputOccupation">Company Name</label>
-      <input type="text" class="form-control" id="inputOccupation" placeholder="Occupation" formControlName="inputOccupation">
+      <label for="InputCompanyName">Company Name</label>
+      <input type="text" class="form-control" id="InputCompanyName" placeholder="Company Name" formControlName="inputCompany">
     </div>
     <div class="form-group col-md-2">
       
-      <label for="mySelect">Gender</label>
-      <select id="mySelect" id="inputGender" class="form-control" formContolName="inputGender">
+      <label for="InputGender">Gender</label>
+      <select id="mySelect" id="InputGender" class="form-control" formContolName="inputGender">
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>
@@ -46,34 +60,50 @@
     </div>
   </div>
   <div class="form-row" >
-    <div class="form-group col-md-6">
-      <label for="inputCity">Father Name</label>
-      <input type="text" class="form-control" id="inputCity" placeholder="Father Name" formControlName="fatherName">
+    <div class="form-group col-md-4">
+      <label for="FatherName">Father Name</label>
+      <input type="text" class="form-control" id="FatherName" placeholder="Father Name" formControlName="fatherName">
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputState">Mother Name</label>
-      <input type="text" class="form-control" id="inputState" placeholder="Mother Name" formControlName="motherName">
+    <div class="form-group col-md-4">
+      <label for="FatherMobile">Father Mobile Number</label>
+      <input type="text" class="form-control" id="FatherMobile" placeholder="Father Mobile No" formControlName="fatherMobile">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="MotherName">Mother Name</label>
+      <input type="text" class="form-control" id="MotherName" placeholder="Mother Name" formControlName="motherName">
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="inputAddress">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="inputAddress">
+    <div class="form-group col-md-9">
+      <label for="InputAddress">Address</label>
+      <input type="text" class="form-control" id="InputAddress" placeholder="1234 Main St" formControlName="inputAddress">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="Security">Security Amount</label>
+      <input type="number" class="form-control" id="Security" placeholder="5000" formControlName="securityAmount">
     </div>
   </div>
  
   <div class="form-row" >
-    <div class="form-group col-md-4">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="inputCity">
+    <div class="form-group col-md-3">
+      <label for="InputCity">City</label>
+      <input type="text" class="form-control" id="InputCity" placeholder="City" formControlName="inputCity">
     </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <input type="text" class="form-control" id="inputState" placeholder="State" formControlName="inputState">
+    <div class="form-group col-md-3">
+      <label for="InputState">State</label>
+      <input type="text" class="form-control" id="InputState" placeholder="State" formControlName="inputState">
     </div>
-    <div class="form-group col-md-4">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip" placeholder="Zip" formControlName="inputZip">
+    <div class="form-group col-md-3">
+      <label for="InputZip">Zip</label>
+      <input type="text" class="form-control" id="InputZip" placeholder="Zip" formControlName="inputZip">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="InputOccupancy"></label>
+      <select id="mySelect" id="inputOccupancy" class="form-control" formContolName="InputOccupancy">
+        <option value="single">Single</option>
+        <option value="double">Double</option>
+        <option value="triple">Triple</option>
+         </select>
     </div>
   </div>
   
@@ -82,3 +112,92 @@
   </div>
 </form>
 </div>
+
+
+
+<div class="container" *ngIf="viewOnly">
+
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+   <div class="form-row"  style="justify-content:center">
+     <h2>View Form</h2>
+   </div>
+ 
+ 
+   <div class="form-row" style="justify-content:end;">
+       <div class="image-container">
+         <img src="{{this.loginForm.value.picture}}" height="100px" width="150px">   
+        </div>
+     
+   </div>
+ 
+ 
+   <div class="form-row">
+     <div class="form-group col-md-7">
+       <label for="inputName">Name</label>
+       
+      </div>
+     <div class="form-group col-md-5">
+       <label for="inputName">Email</label>
+       <input type="email" class="form-control" id="inputName" placeholder="Email" formControlName="inputEmail">
+     </div>
+     <div class="form-group col-md-5">
+       <label for="inputOccupation">Occupation</label>
+       <input type="text" class="form-control" id="inputOccupation" placeholder="Occupation" formControlName="inputOccupation">
+     </div>
+     <div class="form-group col-md-5">
+       <label for="inputOccupation">Company Name</label>
+       <input type="text" class="form-control" id="inputOccupation" placeholder="Company Name" formControlName="inputCompany">
+     </div>
+     <div class="form-group col-md-2">
+       
+       <label for="mySelect">Gender</label>
+       <select id="mySelect" id="inputGender" class="form-control" formContolName="inputGender">
+         <option value="male">Male</option>
+         <option value="female">Female</option>
+         <option value="other">Other</option>
+          </select>
+       
+     </div>
+   </div>
+   <div class="form-row" >
+     <div class="form-group col-md-6">
+       <label for="inputCity">Father Name</label>
+       <input type="text" class="form-control" id="inputCity" placeholder="Father Name" formControlName="fatherName">
+     </div>
+     <div class="form-group col-md-6">
+       <label for="inputState">Mother Name</label>
+       <input type="text" class="form-control" id="inputState" placeholder="Mother Name" formControlName="motherName">
+     </div>
+   </div>
+   <div class="form-row">
+     <div class="form-group col-md-9">
+       <label for="inputAddress">Address</label>
+       <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="inputAddress">
+     </div>
+     <div class="form-group col-md-3">
+       <label for="inputAddress">Security Amount</label>
+       <input type="number" class="form-control" id="inputAddress" placeholder="5000" formControlName="securityAmount">
+     </div>
+   </div>
+  
+   <div class="form-row" >
+     <div class="form-group col-md-4">
+       <label for="inputCity">City</label>
+       <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="inputCity">
+     </div>
+     <div class="form-group col-md-4">
+       <label for="inputState">State</label>
+       <input type="text" class="form-control" id="inputState" placeholder="State" formControlName="inputState">
+     </div>
+     <div class="form-group col-md-4">
+       <label for="inputZip">Zip</label>
+       <input type="text" class="form-control" id="inputZip" placeholder="Zip" formControlName="inputZip">
+     </div>
+   </div>
+   
+   <div class="form-row" style="justify-content:center">
+     <button type="submit" class="btn btn-primary" style="text-align: center;">Submit</button>
+   </div>
+ </form>
+ </div>
+ 

@@ -1,0 +1,68 @@
+.center-container{
+    position: relative;
+       left: 35%;
+       width: 25rem;
+    }
+
+    #plus-button {
+        background-color: #007bff; /* Background color */
+        color: #fff; /* Text color */
+        padding: 10px 20px; /* Padding around the text */
+        border: none; /* Remove the default button border */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Change the cursor to a pointer on hover */
+    }
+
+    .center-name{
+        width: 100%; /* Make sure the container takes up the entire width of its parent */
+        display: flex; /* Use flexbox to control the layout */
+        justify-content: space-between; /* Space between the elements inside the container */
+        align-items: center; 
+    }
+
+    .li-container {
+            display: flex;
+            align-items: center;
+            min-width:30%;
+            margin-bottom: 10px; /* Add spacing between list items */
+        }
+    
+        .li-flex-item:nth-child(1) {
+        flex: 5; /* This item takes up 50% (5/10) of the available space */
+      }
+      
+      .li-flex-item:nth-child(2) {
+        flex: 2.5; /* This item takes up 25% (2.5/10) of the available space */
+      }
+      
+      .li-flex-item:nth-child(3) {
+        flex: 1.5; /* This item takes up 15% (1.5/10) of the available space */
+      }
+      
+      .li-flex-item:nth-child(4) {
+        flex: 1; /* This item takes up 10% (1/10) of the available space */
+      }
+
+        #input-container{
+            margin: 2px;
+            
+        }
+
+        .date-container{
+            flex: 1;
+            min-width: 100px; /* Set a minimum width for the items */
+            margin: 10px;
+            font-size: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+    
+        .span-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+        }
+
+
+

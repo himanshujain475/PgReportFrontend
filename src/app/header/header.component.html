@@ -15,6 +15,9 @@
       <img src="assets/headerimage.jpg" alt="" width="60" height="50">
       Swagatam PG
     </a>
+    <span class="navbar-text" *ngIf="authorization">
+     <button class="btn btn-primary" style="text-align: center;" (click)="logOut()">Log out</button>
+    </span>
     
     <span class="navbar-text">
       Contact Information- 9358428898,8279721689

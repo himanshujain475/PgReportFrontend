@@ -12,6 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AddViewUserComponent } from './add-view-user/add-view-user.component';
 import { Decode64Pipe } from './model/Decode64';
+import { AuthService } from './service/AuthService';
+import { UserAccessGuard } from './service/AuthGuard';
+import { ExpenditureComponent } from './expenditure/expenditure.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import {CookieService} from 'ngx-cookie-service';
 
@@ -21,7 +24,8 @@ import { Decode64Pipe } from './model/Decode64';
     UserLoginComponent,
     HeaderComponent,
     Decode64Pipe,
-    AddViewUserComponent
+    AddViewUserComponent,
+    ExpenditureComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,7 @@ import { Decode64Pipe } from './model/Decode64';
   ],
   exports: [
     Decode64Pipe],
-  providers: [HttpService
+  providers: [HttpService,UserAccessGuard,AuthService
     //,    CookieService
   ],
   bootstrap: [AppComponent]

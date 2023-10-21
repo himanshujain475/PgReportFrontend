@@ -8,7 +8,13 @@ import { Constants } from "../model/constant";
    export class EncyptedService{
  
     hashPassword(pin:number,salt: string) {
-        let saltedpin =pin+this.generateRandomString(Constants.SALT_NO) ;
+      let saltedpin ="";
+      if(salt != null){
+        saltedpin= salt;
+      }
+      else{
+        saltedpin =pin+this.generateRandomString(Constants.SALT_NO) ;
+      }
         const hashedPassword = CryptoJS.SHA256(saltedpin).toString(CryptoJS.enc.Hex);
         return hashedPassword;
       }

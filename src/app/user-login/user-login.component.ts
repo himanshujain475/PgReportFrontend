@@ -3,6 +3,8 @@ import { Constants } from '../model/constant';
 import { Login } from '../model/login';
 import { HttpService } from '../service/HttpService';
 import { EncyptedService } from '../service/EncryptedService';
+import { Router } from '@angular/router';
+import { TransferService } from '../service/TransferService';
 //import {CookieService} from 'ngx-cookie-service';
 @Component({
   selector: 'app-user-login',
@@ -12,6 +14,7 @@ import { EncyptedService } from '../service/EncryptedService';
 export class UserLoginComponent implements OnInit {
 
   mobileNo : number;
+  
   password: number;
 
   login :Login;
@@ -25,11 +28,12 @@ export class UserLoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(private http:HttpService, private encryptedService: EncyptedService
+  constructor(private transferService:TransferService,private http:HttpService, private encryptedService: EncyptedService,private router: Router
     //private cookieService:CookieService
     ) { }
 
   ngOnInit() {
+    
   }
 
   validatePassword(event,key){
@@ -141,9 +145,12 @@ export class UserLoginComponent implements OnInit {
       this.login.salt = this.alreadyGeneratedSalt;
       
     this.http.postRequest(url,this.login).subscribe(response=>{
-      if(response.status ==200){
+      if(response.status == "200"){
+        console.log("I am here")
         Constants.AUTH_TOKEN = response.response;
         localStorage.setItem("authorization",Constants.AUTH_TOKEN);
+        this.transferService.updateLogOutButton(true);
+        this.router.navigate( ['user']);
       }
       console.log(Constants.AUTH_TOKEN);
     });

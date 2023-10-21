@@ -6,7 +6,8 @@
   <div class="myform form ">
      <div class="logo mb-3">
        <div class="col-md-12 text-center">
-        <h1>Login</h1>
+        <h1 *ngIf="!signUp">Login</h1>
+        <h1 *ngIf="signUp">Sign Up</h1>
         <alert type="danger" *ngIf="errorList.length !=0">
           <strong>Following errors:</strong>
           <ul *ngFor="let error of errorList" >
